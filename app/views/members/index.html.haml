@@ -2,3 +2,11 @@
 	%input.search-box{:name => "search_term"}
 	%input{:name => "authenticity_token", :type => "hidden", :value => form_authenticity_token }
 		%button{:type => "submit"} Find
+
+%ul
+	- @members_list.each do |member|
+		%li
+			%ul
+				%li= member.name
+				%li= "Member of the House of #{member.house}" 
+				%li= member.party	

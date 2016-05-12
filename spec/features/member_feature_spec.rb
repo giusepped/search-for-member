@@ -22,7 +22,10 @@ feature 'members' do
 		end
 
 		scenario 'should display name, house and party for the members' do
-			expect(page).to have_tag('ul', :text => '<li>The Lord Bradshaw</li><li>Member of the House of Lords</li><li>Liberal Democrat</li>')
+			bradshaw = '<li>The Lord Bradshaw</li>
+			<li>Member of the House of Lords</li>
+			<li>Liberal Democrat</li>'
+			expect(page).to have_tag('ul', :text => bradshaw)
 		end
 	end
 
