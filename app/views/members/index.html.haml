@@ -6,7 +6,7 @@
 %ul
 	- @members_list.each do |member|
 		%li
-			%ul
+			%ul{ class: "member-#{member.member_id}" }
 				%li= member.name
 				%li= "Member of the House of #{member.house}" 
 				%li= member.party	
