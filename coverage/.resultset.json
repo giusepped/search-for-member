@@ -1,0 +1,28 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/appleyardr/Documents/search-for-member/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/appleyardr/Documents/search-for-member/app/helpers/members_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/appleyardr/Documents/search-for-member/app/controllers/members_controller.rb": [
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/appleyardr/Documents/search-for-member/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        null
+      ]
+    },
+    "timestamp": 1463041167
+  }
+}
