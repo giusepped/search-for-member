@@ -3,10 +3,11 @@
 	%input{:name => "authenticity_token", :type => "hidden", :value => form_authenticity_token }
 		%button{:type => "submit"} Find
 
-%ul
-	- @members_list.each do |member|
-		%li
-			%ul{ class: "member-#{member.member_id}" }
-				%li= member.name
-				%li= "Member of the House of #{member.house}" 
-				%li= member.party	
+-if (@members_list != nil)
+	%ul
+		- @members_list.each do |member|
+			%li
+				%ul{ class: "member-#{member.member_id}" }
+					%li= member.name
+					%li= "Member of the House of #{member.house}" 
+					%li= member.party	
