@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :members do
     collection do
       get 'search'
+      post 'fetch'
     end
   end
 

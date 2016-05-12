@@ -1,7 +1,7 @@
 require 'net/http'
 require 'crack'
 
-class DataApiCall
+class MembersListApiCall
 	def get_data(search_term)
 		url = url_builder(search_term)
 		req = request(url)
@@ -12,7 +12,7 @@ class DataApiCall
 	private
 
 	def url_builder(search_term)
-		url = "http://data.parliament.uk/membersdataplatform/services/mnis/members/query/fymp=#{search_term}/"
+		url = "http://data.parliament.uk/membersdataplatform/services/mnis/members/query/biographyinterest=#{search_term}/"
 		URI.parse(url)
 	end
 
