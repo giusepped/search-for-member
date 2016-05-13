@@ -19,10 +19,9 @@ $ docker-compose up
 ## Testing
 
 Run the rake spec task to run both the feature and unit tests.
-Note: Make sure the redis server is still running.
 
-```sh
-$ rake spec
+```bash
+$ docker-compose run web rake spec
 ```
 
 ## Contributing

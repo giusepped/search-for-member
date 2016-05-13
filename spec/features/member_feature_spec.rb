@@ -6,7 +6,7 @@ feature 'members' do
 		scenario 'should display an input box and a "Find" button' do
 			visit members_path
 			expect(page).to have_selector('input[name="search_term"]')
-			expect(page).to have_button 'Find'
+			expect(page).to have_button 'banana'
 		end
 	end
 
