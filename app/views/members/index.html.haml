@@ -11,3 +11,6 @@
 					%li= member.name
 					%li= "Member of the House of #{member.house}" 
 					%li= member.party	
+
+-if (@error_message != nil)
+	%p= @error_message
