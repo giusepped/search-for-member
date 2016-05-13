@@ -18,8 +18,6 @@ $ docker-compose up
 
 ## Testing
 
-Run the rake spec task to run both the feature and unit tests.
-
 ```bash
 $ docker-compose build
 $ docker-compose run web rake spec
