@@ -63,11 +63,18 @@ feature 'members' do
 	        visit members_path
 			fill_in 'search_term', with: 'edinburgh'
 			click_button 'Find'
+			click_link 'member-link-2483'
 		end
 
 		scenario 'should redirect to individual member page' do
-			click_link 'member-link-2483'
 			expect(current_path).to eq ('/members/2483')
+		end
+
+		scenario 'should display biographical information about a member' do
+			expect(page).to have_tag('ul', :with => { :id => 'member-2483' }, :text => 'The Lord Bradshaw')
+			expect(page).to have_tag('ul', :with => { :id => 'member-2483' }, :text => 'Member of the House of Lords')
+			expect(page).to have_tag('ul', :with => { :id => 'member-2483' }, :text => 'Liberal Democrat')
+			expect(page).to have_css("img[src='http://www.dodspeople.com/photos/26640.jpg']")
 		end
 	end
 
