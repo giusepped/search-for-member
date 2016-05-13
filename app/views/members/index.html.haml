@@ -7,7 +7,7 @@
 	%ul
 		- @members_list.each do |member|
 			%li
-				%div.member-div
+				%div.member-div{ class "member-div-#{house}" }
 					=image_tag member.image_link
 					%ul{ class: "member-#{member.member_id}" }
 						%li= member.name
