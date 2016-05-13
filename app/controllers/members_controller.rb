@@ -26,4 +26,7 @@ class MembersController < ApplicationController
 		$redis.set('json_data', data_to_display)
 		redirect_to members_path
 	end
+
+	def show
+	end
 end

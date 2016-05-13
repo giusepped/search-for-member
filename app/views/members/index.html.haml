@@ -7,12 +7,13 @@
 	%ul
 		- @members_list.each do |member|
 			%li
-				%div.member-div
-					=image_tag member.image_link
-					%ul{ class: "member-#{member.member_id}" }
-						%li= member.name
-						%li= "Member of the House of #{member.house}" 
-						%li= member.party	
+				= link_to member_path(member.member_id), id: "member-link-#{member.member_id}" do
+					%div.member-div
+						=image_tag member.image_link
+						%ul{ id: "member-#{member.member_id}" }
+							%li= member.name
+							%li= "Member of the House of #{member.house}" 
+							%li= member.party	
 
 -if (@error_message != nil)
 	%p= @error_message
