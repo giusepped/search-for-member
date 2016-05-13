@@ -22,11 +22,8 @@ class MembersController < ApplicationController
 		$redis.del('members_list')
 		members_list_api_call = MembersListApiCall.new
 		members_list = members_list_api_call.get_data(params[:search_term])
-		if (members_list["Members"] != nil)
-			$redis.set('json_data', members_list.to_json)
-		else
-			$redis.set('json_data', 'No results')
-		end
+		data_to_display = members_list['Members'] == nil ? 'No results' : members_list.to_json
+		$redis.set('json_data', data_to_display)
 		redirect_to members_path
 	end
 end
