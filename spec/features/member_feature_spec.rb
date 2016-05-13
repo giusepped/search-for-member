@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'response_stubs/json_list_view_stub'
+require 'response_stubs/json_view_stubs'
 
 feature 'members' do
 
@@ -83,6 +83,10 @@ feature 'members' do
 			expect(page).to have_css("img[src='http://www.dodspeople.com/photos/26640.jpg']")
 		end
 
+		scenario 'should display the information as json when .json is used' do
+			visit ("#{current_path}.json")
+			expect(page).to have_content(JSON_MEMBER_VIEW)
+		end
 	end
 
 end

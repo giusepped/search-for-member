@@ -5,11 +5,8 @@ class MembersController < ApplicationController
 		if ($redis.get('json_data') != nil && $redis.get('json_data') != 'No results')
 			@members_array = get_json_data
 			@members_array.map!{ |member_data| Member.new(member_data) }
-
-			respond_to do |format|
-				format.html
-				format.json { render json: @members_array}
-			end
+			format_as_json(@members_array)
+			
 		elsif $redis.get('json_data') == 'No results'
 			@error_message = $redis.get('json_data')
 		end
@@ -29,6 +26,7 @@ class MembersController < ApplicationController
 		members_array = get_json_data
 		member_data = members_array.select{ |member| member['Member_Id'] == id }[0]
 		@member = Member.new(member_data)
+		format_as_json(@member)
 	end
 
 	private
@@ -40,5 +38,12 @@ class MembersController < ApplicationController
 
 	def clear_redis
 		$redis.flushall
+	end
+
+	def format_as_json(data)
+		respond_to do |format|
+			format.html
+			format.json { render json: data }
+		end
 	end
 end
