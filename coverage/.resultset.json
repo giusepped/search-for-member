@@ -1,15 +1,15 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/appleyardr/Documents/search-for-member/app/helpers/application_helper.rb": [
+      "/Users/desantisg/Desktop/Projects/search-for-member/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/appleyardr/Documents/search-for-member/app/helpers/members_helper.rb": [
+      "/Users/desantisg/Desktop/Projects/search-for-member/app/helpers/members_helper.rb": [
         1,
         null
       ],
-      "/Users/appleyardr/Documents/search-for-member/app/controllers/members_controller.rb": [
+      "/Users/desantisg/Desktop/Projects/search-for-member/app/controllers/members_controller.rb": [
         1,
         null,
         1,
@@ -40,7 +40,7 @@
         null,
         null
       ],
-      "/Users/appleyardr/Documents/search-for-member/lib/api_calls/members_list_api_call.rb": [
+      "/Users/desantisg/Desktop/Projects/search-for-member/lib/api_calls/members_list_api_call.rb": [
         1,
         1,
         null,
@@ -73,14 +73,14 @@
         null,
         null
       ],
-      "/Users/appleyardr/Documents/search-for-member/app/controllers/application_controller.rb": [
+      "/Users/desantisg/Desktop/Projects/search-for-member/app/controllers/application_controller.rb": [
         1,
         null,
         null,
         1,
         null
       ],
-      "/Users/appleyardr/Documents/search-for-member/app/models/member.rb": [
+      "/Users/desantisg/Desktop/Projects/search-for-member/app/models/member.rb": [
         1,
         null,
         1,
@@ -103,6 +103,6 @@
         null
       ]
     },
-    "timestamp": 1463128015
+    "timestamp": 1463132331
   }
 }
