@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'response_stubs/json_list_view_stub'
 
 feature 'members' do
 
@@ -32,6 +33,11 @@ feature 'members' do
 			expect(page).to have_tag('ul', :with => { :id => 'member-2483' }, :text => 'Member of the House of Lords')
 			expect(page).to have_tag('ul', :with => { :id => 'member-2483' }, :text => 'Liberal Democrat')
 			expect(page).to have_css("img[src='http://www.dodspeople.com/photos/26640.jpg']")
+		end
+
+		scenario 'should display the information as json when .json is used' do
+			visit("#{current_path}.json")
+			expect(page).to have_content(JSON_LIST_VIEW_STUB)
 		end
 	end
 
@@ -76,6 +82,7 @@ feature 'members' do
 			expect(page).to have_tag('ul', :with => { :id => 'member-2483' }, :text => 'Liberal Democrat')
 			expect(page).to have_css("img[src='http://www.dodspeople.com/photos/26640.jpg']")
 		end
+
 	end
 
 end

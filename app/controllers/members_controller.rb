@@ -4,8 +4,11 @@ class MembersController < ApplicationController
 	def index
 		if ($redis.get('json_data') != nil && $redis.get('json_data') != 'No results')
 			@members_array = get_json_data
-			@members_array.map! do |member_data|
-				member_data = Member.new(member_data)
+			@members_array.map!{ |member_data| Member.new(member_data) }
+
+			respond_to do |format|
+				format.html
+				format.json { render json: @members_array}
 			end
 		elsif $redis.get('json_data') == 'No results'
 			@error_message = $redis.get('json_data')
