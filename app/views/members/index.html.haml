@@ -3,9 +3,9 @@
 	%input{:name => "authenticity_token", :type => "hidden", :value => form_authenticity_token }
 		%button{:type => "submit"} Find
 
--if (@members_list != nil)
+-if (@members_array != nil)
 	%ul
-		- @members_list.each do |member|
+		- @members_array.each do |member|
 			%li
 				= link_to member_path(member.member_id), id: "member-link-#{member.member_id}" do
 					%div.member-div
