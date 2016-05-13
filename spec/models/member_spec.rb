@@ -3,10 +3,9 @@ require 'response_stubs/json_member_data_stub'
 
 describe Member, type: :model do
 
-	describe '#set_properties' do
+	describe '#initialize' do
 		before(:each) do
-			@member = Member.new
-			@member.set_properties(JSON.parse(JSON_MEMBER_DATA_STUB, :quirks_mode => true))
+			@member = Member.new(JSON.parse(JSON_MEMBER_DATA_STUB, :quirks_mode => true))
 		end
 		it 'sets the name correctly' do
 			expect(@member.name).to eq 'The Lord Bradshaw'

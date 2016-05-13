@@ -5,9 +5,7 @@ class MembersController < ApplicationController
 		if ($redis.get('json_data') != nil && $redis.get('json_data') != 'No results')
 			@members_array = get_json_data
 			@members_array.map! do |member_data|
-				member = Member.new
-				member.set_properties(member_data)
-				member_data = member
+				member_data = Member.new(member_data)
 			end
 		elsif $redis.get('json_data') == 'No results'
 			@error_message = $redis.get('json_data')
@@ -27,8 +25,7 @@ class MembersController < ApplicationController
 		id = params[:id]
 		members_array = get_json_data
 		member_data = members_array.select{ |member| member['Member_Id'] == id }[0]
-		@member = Member.new
-		@member.set_properties(member_data)
+		@member = Member.new(member_data)
 	end
 
 	private
