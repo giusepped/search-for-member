@@ -2,21 +2,20 @@ require 'api_calls/members_list_api_call'
 
 class MembersController < ApplicationController
 	def index
-		if (($redis.get('json_data') != nil && $redis.get('json_data') != 'No results'))
+		if ($redis.get('json_data') != nil && $redis.get('json_data') != 'No results')
 			@members_array = get_json_data
 			@members_array.map! do |member_data|
 				member = Member.new
 				member.set_properties(member_data)
 				member_data = member
 			end
-		elsif ($redis.get('json_data') == 'No results')
+		elsif $redis.get('json_data') == 'No results'
 			@error_message = $redis.get('json_data')
 		end
 	end
 
 	def fetch
-		$redis.del('json_data')
-		$redis.del('members_list')
+		clear_redis
 		members_list_api_call = MembersListApiCall.new
 		members_list = members_list_api_call.get_data(params[:search_term])
 		data_to_display = members_list['Members'] == nil ? 'No results' : members_list.to_json
@@ -37,5 +36,9 @@ class MembersController < ApplicationController
 	def get_json_data
 		data =JSON.load $redis.get('json_data')
 		data['Members']['Member']
+	end
+
+	def clear_redis
+		$redis.flushall
 	end
 end
