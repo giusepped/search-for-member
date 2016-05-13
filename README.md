@@ -5,40 +5,41 @@
 [![Code Climate](https://codeclimate.com/github/giusepped/search-for-member/badges/gpa.svg)](https://codeclimate.com/github/giusepped/search-for-member)
 [![Dependency Status](https://gemnasium.com/giusepped/search-for-member.svg)](https://gemnasium.com/giusepped/search-for-member)
 
+# Project Name
 
-Overview
--------
 This is a very basic Rails app that lets you search for members of both houses of Parliament using a keyword that represents one of their interests (e.g. "Housing", "Yorkshire", "Africa" etc). Once you get a list of members back, you can click on each one of them to get a bio page of that particular member
 
-## Installation
-
-Make sure to have Ruby, Rails and Redis installed before starting.
-
-In your terminal do the following
+## Usage
 
 ```bash
-$ git clone https://github.com/giusepped/search-for-member.git
-$ cd search-for-member
-$ bundle install
-```
-
-In a new tab, start a redis server
-
-```bash
-$ redis-server
-```
-
-You can now start the Rails server
-
-```bash
-$ rails s # -b 0.0.0.0 when running on a VM
+$ docker-machine create --driver virtualbox default
+$ docker-compose up
 ```
 
 ## Testing
 
-Run the rake spec task to run both the feature and unit tests(make sure the redis server is still running)
-
-```sh
-$ rake spec
+```bash
+$ docker-compose build
+$ docker-compose run web rake spec
+$ docker-compose down
 ```
 
+## Contributing
+
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
+
+## History
+
+TODO: Write history
+
+## Credits
+
+TODO: Write credits
+
+## License
+
+TODO: Write license

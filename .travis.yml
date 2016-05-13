@@ -3,12 +3,15 @@ sudo: false
 
 rvm:
   - 2.2
-  
-before_install:
-  - gem install bundler -v 1.12.2
 
 services:
-  - redis-server
+  - docker
+  
+before_install:
+  - docker-compose build
 
 script:
-  - bundle exec rake spec
+  - docker-compose run web rake spec
+  
+after_install:
+  - docker-compose down
