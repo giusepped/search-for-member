@@ -1,19 +1,22 @@
-%form{:method => "post", :action => "members/fetch"}
-	%input.search-box{:name => "search_term"}
-	%input{:name => "authenticity_token", :type => "hidden", :value => form_authenticity_token }
-		%button{:type => "submit"} Find
+%header
+	%form{:method => "post", :action => "members/fetch"}
+		%input.search-box{:name => "search_term", :placeholder => "search for a place or an interest"}
+		%input{:name => "authenticity_token", :type => "hidden", :value => form_authenticity_token }
+			%button{:type => "submit"} Find
 
--if (@members_array != nil)
-	%ul
-		- @members_array.each do |member|
-			%li
-				= link_to member_path(member.member_id), id: "member-link-#{member.member_id}" do
-					%div.member-div
-						=image_tag member.image_link
-						%ul{ id: "member-#{member.member_id}" }
-							%li= member.name
-							%li= "Member of the House of #{member.house}" 
-							%li= member.party	
+%div.main-container
+	-if (@members_array != nil)
+		%ul
+			- @members_array.each do |member|
+				%li
+					= link_to member_path(member.member_id), id: "member-link-#{member.member_id}" do
+						%div{ class: "member-div member-div-#{member.house}" }
+							=image_tag member.image_link, :class => "index-member-image"
+							%ul{ class: "member-list", id: "member-#{member.member_id}" }
+								%li= member.name
+								%li= "Member of the House of #{member.house}" 
+								%li= member.party
+						%div{ class: "clear" }
 
--if (@error_message != nil)
-	%p= @error_message
+	-if (@error_message != nil)
+		%div.error-message= @error_message 
