@@ -1,0 +1,6 @@
+%div.member-div
+	=image_tag @member.image_link
+	%ul{ id: "member-#{@member.member_id}" }
+		%li= @member.name
+		%li= "Member of the House of #{@member.house}" 
+		%li= @member.party	

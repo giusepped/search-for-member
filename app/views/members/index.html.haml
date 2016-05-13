@@ -5,17 +5,18 @@
 			%button{:type => "submit"} Find
 
 %div.main-container
-	-if (@members_list != nil)
+	-if (@members_array != nil)
 		%ul
-			- @members_list.each do |member|
+			- @members_array.each do |member|
 				%li
-					%div{ class: "member-div member-div-#{member.house}" }
-						=image_tag member.image_link, :class => "index-member-image"
-						%ul{ class: "member-list member-#{member.member_id}" }
-							%li= member.name
-							%li= "Member of the House of #{member.house}" 
-							%li= member.party
-					%div{ class: "clear" }
+					= link_to member_path(member.member_id), id: "member-link-#{member.member_id}" do
+						%div{ class: "member-div member-div-#{member.house}" }
+							=image_tag member.image_link, :class => "index-member-image"
+							%ul{ class: "member-list", id: "member-#{member.member_id}" }
+								%li= member.name
+								%li= "Member of the House of #{member.house}" 
+								%li= member.party
+						%div{ class: "clear" }
 
 	-if (@error_message != nil)
 		%div.error-message= @error_message 
