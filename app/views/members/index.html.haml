@@ -7,7 +7,11 @@
 	%ul
 		- @members_list.each do |member|
 			%li
+				=image_tag member.image_link
 				%ul{ class: "member-#{member.member_id}" }
 					%li= member.name
 					%li= "Member of the House of #{member.house}" 
 					%li= member.party	
+
+-if (@error_message != nil)
+	%p= @error_message

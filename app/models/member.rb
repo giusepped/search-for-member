@@ -14,7 +14,7 @@ class Member
   private
 
   def image_link_builder(id)
-    "http://www.dodspeople.com/photos/#{id}.jpeg"
+    "http://www.dodspeople.com/photos/#{id}.jpg"
   end
 
 end

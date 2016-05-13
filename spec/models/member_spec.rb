@@ -29,7 +29,7 @@ describe Member, type: :model do
 		end
 
 		it 'generates the link for the image' do
-			expect(@member.image_link).to eq 'http://www.dodspeople.com/photos/26640.jpeg'
+			expect(@member.image_link).to eq 'http://www.dodspeople.com/photos/26640.jpg'
 		end
 	end
 
