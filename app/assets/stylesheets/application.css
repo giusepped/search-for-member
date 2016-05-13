@@ -97,3 +97,11 @@ ul {
 	clear: left;
 }
 
+.error-message {
+	color: red;
+	background-color: #ffcccc;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+}
+
