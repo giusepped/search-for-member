@@ -4,10 +4,17 @@ web:
   build: .
   environment:
     - REDIS_URL=redis://redis
-    - VIRTUAL_HOST=wastebits.docker
   volumes:
     - .:/app
   ports:
-    - "3000:3000"
+    - "3000"
   links: 
-    - redis
+    - redis  
+lb:
+  image: dockercloud/haproxy
+  links:
+    - web
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+  ports:
+    - 80:80

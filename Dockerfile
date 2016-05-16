@@ -30,6 +30,6 @@ ARG GIT_TAG=unknown
 LABEL git-sha=$GIT_SHA \
 	      git-tag=$GIT_TAG
 	      
-EXPOSE 3000
+# EXPOSE 3000
 
 CMD ["passenger", "start"]
