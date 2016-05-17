@@ -4,6 +4,7 @@ class MembersController < ApplicationController
 	def index
 		if ($redis.get('json_data') != nil && $redis.get('json_data') != 'No results')
 			@members_array = get_json_data
+			@members_array = [@members_array] unless @members_array.kind_of?(Array)
 			@members_array.map!{ |member_data| Member.new(member_data) }
 			format_as_json(@members_array)
 			
