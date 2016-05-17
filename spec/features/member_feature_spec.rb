@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'response_stubs/json_view_stubs'
+require 'response_stubs/single_member_xml'
 
 feature 'members' do
 
@@ -11,7 +12,7 @@ feature 'members' do
 		end
 	end
 
-	context 'after the user searches for "edinburgh"' do
+	context 'after the user searches for "edinburgh" (multiple results)' do
 		before(:each) do
     		stub_request(:get, "http://data.parliament.uk/membersdataplatform/services/mnis/members/query/biographyinterest=edinburgh/").
     		with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'data.parliament.uk', 'User-Agent'=>'Ruby'}).
@@ -41,7 +42,7 @@ feature 'members' do
 		end
 	end
 
-	context 'after the user searches for "aberdeen"' do 
+	context 'after the user searches for "aberdeen" (no results)' do 
 		before(:each) do
     		stub_request(:get, "http://data.parliament.uk/membersdataplatform/services/mnis/members/query/biographyinterest=aberdeen/").
     		with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'data.parliament.uk', 'User-Agent'=>'Ruby'}).
@@ -55,6 +56,26 @@ feature 'members' do
 
 		scenario 'should display error message' do
 			expect(page).to have_content('No results')
+		end
+	end
+
+	context 'after the user searches for "bradford" (one result)' do
+		before(:each) do
+    		stub_request(:get, "http://data.parliament.uk/membersdataplatform/services/mnis/members/query/biographyinterest=bradford/").
+    		with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'data.parliament.uk', 'User-Agent'=>'Ruby'}).
+    		to_return(:status => 200, :body => SINGLE_MEMBER_XML, :headers => {})
+  		end
+		before(:each) do
+	        visit members_path
+			fill_in 'search_term', with: 'bradford'
+			click_button 'Find'
+		end
+
+		scenario 'should display image, name, house and party for a single member' do
+			expect(page).to have_tag('ul', :with => { :id => 'member-3798' }, :text => 'The Lord Patel of Bradford OBE')
+			expect(page).to have_tag('ul', :with => { :id => 'member-3798' }, :text => 'Member of the House of Lords')
+			expect(page).to have_tag('ul', :with => { :id => 'member-3798' }, :text => 'Labour')
+			expect(page).to have_css("img[src='http://www.dodspeople.com/photos/54192.jpg']")
 		end
 	end
 
